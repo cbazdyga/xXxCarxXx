@@ -15,6 +15,15 @@
 
 void leds_init(uint32_t leds)
 {
+_HAL_RCC_GPIOA_CLK_ENABLE();
+GPIO_InitTypeDef gpio;
+gpio.Pin = GPIO_PIN_5;
+gpio.Mode = GPIO_MODE_OUTPUT_PP;
+gpio.Pull = GPIO_NOPULL;
+gpio.Speed = GPIO_SPEED_FREQ_LOW;
+HAL_GPIO_Init(GPIOA, &gpio);
+_HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5, GPIO_PIN_SET);
+
 }
 
 void leds_deinit(uint32_t leds)
